@@ -3,161 +3,505 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Advogado | Modelo DigitalCore Systems</title>
-  <meta name="description" content="Modelo base para Advogado." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Advocacia Silva | Atendimento Jurídico Profissional</title>
+  <meta
+    name="description"
+    content="Escritório de advocacia com atendimento estratégico, áreas de atuação diversificadas e foco em segurança jurídica."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
-      --bg:#07101f; --card:rgba(255,255,255,.06); --line:rgba(255,255,255,.10);
-      --text:#f7fbff; --muted:rgba(247,251,255,.70); --cyan:#67e8f9; --blue:#5b94ff;
+      --bg: #0b1120;
+      --bg-soft: #111827;
+      --card: rgba(255, 255, 255, 0.04);
+      --line: rgba(255, 255, 255, 0.10);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --primary: #38bdf8;
+      --primary-2: #60a5fa;
+      --dark: #020617;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     }
-    * { box-sizing:border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin:0; font-family:Inter,system-ui,sans-serif; color:var(--text);
+      margin: 0;
+      font-family: "Inter", sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(103,232,249,.10), transparent 30%),
-        radial-gradient(circle at top left, rgba(91,148,255,.08), transparent 30%),
-        linear-gradient(180deg,#07101f 0%, #040914 100%);
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 28%),
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.10), transparent 28%),
+        linear-gradient(180deg, #0b1120 0%, #060b16 100%);
+      color: var(--text);
     }
-    .container { width:min(1180px, calc(100% - 32px)); margin:0 auto; }
-    .hero { padding:28px 0 72px; }
-    .topbar {
-      display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
-      border:1px solid var(--line); background:var(--card); border-radius:999px; padding:12px 18px;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
       backdrop-filter: blur(12px);
+      background: rgba(2, 6, 23, 0.75);
+      border-bottom: 1px solid var(--line);
     }
-    .brand { font-weight:800; letter-spacing:.08em; color:white; text-decoration:none; }
-    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+
+    .header-inner {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
     .btn {
-      display:inline-flex; align-items:center; justify-content:center; padding:14px 22px;
-      border-radius:18px; font-weight:700; text-decoration:none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
     }
-    .btn-primary { background:linear-gradient(135deg, #66ecff, #56c7ff 45%, #5c88ff 100%); color:#06101e; }
-    .btn-secondary { color:white; border:1px solid var(--line); background:rgba(255,255,255,.05); }
-    .grid { display:grid; grid-template-columns:1fr .95fr; gap:28px; align-items:center; margin-top:34px; }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: var(--dark);
+      box-shadow: 0 14px 30px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 90px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
     .pill {
-      display:inline-flex; padding:10px 14px; border-radius:999px;
-      border:1px solid rgba(103,232,249,.22); background:rgba(103,232,249,.08); color:#9ef3ff; font-size:14px;
+      display: inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(56, 189, 248, 0.10);
+      color: #bae6fd;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
     }
-    h1 { font-size:clamp(2.4rem, 6vw, 4.4rem); line-height:1.04; margin:18px 0 0; letter-spacing:-.04em; }
-    p { color:var(--muted); line-height:1.85; }
-    .hero-actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:26px; }
-    .highlights { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px; margin-top:26px; }
-    .mini-card {
-      border:1px solid var(--line); background:rgba(255,255,255,.05); border-radius:18px; padding:16px; font-size:14px;
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      max-width: 700px;
     }
+
+    .hero p {
+      margin: 22px 0 0;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hero-box {
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-box-inner {
+      border-radius: 22px;
+      border: 1px solid rgba(56, 189, 248, 0.16);
+      background: linear-gradient(180deg, rgba(15,23,42,0.95), rgba(15,23,42,0.70));
+      padding: 24px;
+    }
+
+    .hero-box h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .hero-box .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-head span {
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .section-head h2 {
+      margin: 12px 0 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+    }
+
     .card {
-      border:1px solid var(--line); background:var(--card); border-radius:30px; padding:24px;
-      backdrop-filter: blur(12px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
     }
-    .showcase {
-      border:1px solid rgba(103,232,249,.10); background:linear-gradient(135deg, rgba(103,232,249,.08), rgba(91,148,255,.08));
-      border-radius:24px; padding:28px; margin-top:18px;
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.22), rgba(96,165,250,0.24));
+      margin-bottom: 18px;
     }
-    .showcase-box {
-      height:220px; border-radius:22px; border:1px solid var(--line);
-      background:linear-gradient(135deg, rgba(103,232,249,.16), rgba(91,148,255,.20), rgba(255,255,255,.03));
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.18rem;
     }
-    .metrics { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px; margin-top:18px; }
-    .metric { border:1px solid var(--line); background:rgba(255,255,255,.05); border-radius:20px; padding:18px; }
-    .label { color:rgba(247,251,255,.5); font-size:13px; }
-    .section { padding:0 0 72px; }
-    .section-head h2 { font-size:clamp(2rem, 4vw, 2.8rem); margin:8px 0 0; }
-    .cards { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:18px; }
-    .item { border:1px solid var(--line); background:var(--card); border-radius:24px; padding:22px; }
-    .dot { width:48px; height:48px; border-radius:16px; background:linear-gradient(135deg, rgba(103,232,249,.24), rgba(91,148,255,.26)); margin-bottom:16px; }
-    .footer { padding:0 0 40px; color:rgba(247,251,255,.45); text-align:center; }
+
+    .card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .about-box {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .list-item {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      color: #e2e8f0;
+    }
+
+    .cta {
+      padding-bottom: 100px;
+    }
+
+    .cta-box {
+      border-radius: 30px;
+      padding: 36px;
+      border: 1px solid rgba(56,189,248,0.20);
+      background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(96,165,250,0.10));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-box h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .cta-box p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0 40px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: #25D366;
+      color: white;
+      font-size: 1.5rem;
+      box-shadow: 0 16px 34px rgba(37, 211, 102, 0.35);
+      z-index: 99;
+    }
+
     @media (max-width: 980px) {
-      .grid, .cards, .metrics, .highlights { grid-template-columns:1fr; }
+      .hero-grid,
+      .cards,
+      .about-grid,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        padding: 12px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="container">
-      <header class="topbar">
-        <a class="brand" href="../../catalogo.html">DIGITALCORE SYSTEMS</a>
-        <div class="actions">
-          <a class="btn btn-secondary" href="../../catalogo.html">Voltar ao Catálogo</a>
-          <a class="btn btn-primary" href="https://wa.me/5591985066711" target="_blank">Quero esse modelo</a>
-        </div>
-      </header>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">ADVOCACIA <span>SILVA</span></div>
+      <nav class="nav">
+        <a href="#inicio">Início</a>
+        <a href="#atuacao">Áreas de Atuação</a>
+        <a href="#escritorio">Escritório</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
 
-      <div class="grid">
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
         <div>
-          <div class="pill">Modelo pronto para Advogado</div>
-          <h1>Posicionamento sério, elegante e profissional para serviços jurídicos.</h1>
-          <p>Perfeito para escritórios que precisam mostrar áreas de atuação e captar clientes com credibilidade.</p>
+          <div class="pill">Atendimento jurídico profissional</div>
+          <h1>Defesa estratégica para proteger seus direitos com segurança.</h1>
+          <p>
+            Escritório com atuação focada em soluções jurídicas claras, atendimento responsável
+            e acompanhamento profissional para pessoas físicas e empresas.
+          </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/5591985066711" target="_blank">Solicitar esse modelo</a>
-            <a class="btn btn-secondary" href="../../catalogo.html">Ver outros modelos</a>
-          </div>
-          <div class="highlights">
-            <div class="mini-card">Áreas de atuação</div>
-            <div class="mini-card">Apresentação do escritório</div>
-            <div class="mini-card">Contato rápido</div>
-            <div class="mini-card">Troque nome, fotos e telefone</div>
+            <a class="btn btn-primary" href="https://wa.me/5591985066711" target="_blank">Falar no WhatsApp</a>
+            <a class="btn btn-secondary" href="#atuacao">Ver áreas de atuação</a>
           </div>
         </div>
 
-        <div class="card">
+        <div class="hero-box">
+          <div class="hero-box-inner">
+            <h3>Atendimento com foco em resultado</h3>
+            <div class="muted">Estrutura moderna para transmitir confiança e credibilidade.</div>
+            <div class="hero-stats">
+              <div class="stat">
+                <strong>24h</strong>
+                <span>Resposta rápida no WhatsApp</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>Visual profissional e responsivo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="atuacao">
+      <div class="container">
+        <div class="section-head">
+          <span>Áreas de atuação</span>
+          <h2>Soluções jurídicas para diferentes necessidades</h2>
+          <p>
+            Apresente aqui as áreas em que o escritório atua para transmitir especialização e facilitar o contato do cliente.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3>Direito Civil</h3>
+            <p>Contratos, responsabilidade civil, indenizações, cobranças e conflitos patrimoniais.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3>Direito Trabalhista</h3>
+            <p>Assessoria para trabalhadores e empresas em demandas trabalhistas e preventivas.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3>Direito Empresarial</h3>
+            <p>Consultoria jurídica para negócios, estruturação contratual e suporte estratégico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="escritorio">
+      <div class="container">
+        <div class="section-head">
+          <span>Sobre o escritório</span>
+          <h2>Credibilidade, clareza e postura profissional</h2>
+          <p>
+            Essa seção é ideal para contar a história do escritório, destacar experiência e reforçar confiança.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box">
+            <h3>Atendimento personalizado</h3>
+            <p>
+              Cada caso exige análise cuidadosa, estratégia adequada e acompanhamento responsável.
+              O objetivo é oferecer segurança jurídica e comunicação clara ao cliente.
+            </p>
+          </div>
+
+          <div class="about-box">
+            <h3>Diferenciais</h3>
+            <div class="list">
+              <div class="list-item">Atendimento consultivo e preventivo</div>
+              <div class="list-item">Linguagem clara e orientação objetiva</div>
+              <div class="list-item">Atuação com postura séria e profissional</div>
+              <div class="list-item">Contato rápido e acompanhamento próximo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta" id="contato">
+      <div class="container">
+        <div class="cta-box">
           <div>
-            <div class="label">Modelo em destaque</div>
-            <h3 style="margin:8px 0 0; font-size:1.8rem;">Advogado</h3>
+            <h2>Precisa de orientação jurídica?</h2>
+            <p>
+              Adicione aqui telefone, endereço, horário de atendimento e direcione o cliente para um contato rápido no WhatsApp.
+            </p>
           </div>
-          <div class="showcase">
-            <div class="showcase-box"></div>
-          </div>
-          <div class="metrics">
-            <div class="metric">
-              <div class="label">Objetivo</div>
-              <strong>Gerar autoridade e captar clientes jurídicos.</strong>
-            </div>
-            <div class="metric">
-              <div class="label">Estrutura</div>
-              <strong>Hero institucional, atuação, escritório, diferenciais e contato.</strong>
-            </div>
-          </div>
+          <a class="btn btn-primary" href="https://wa.me/5591985066711" target="_blank">Agendar atendimento</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div class="pill">Estrutura sugerida</div>
-        <h2>Página base pronta para personalização</h2>
-        <p>Substitua os blocos abaixo pelas informações reais do cliente e publique rapidamente.</p>
-      </div>
+  <footer class="footer">
+    © 2026 Advocacia Silva — Todos os direitos reservados.
+  </footer>
 
-      <div class="cards">
-        <div class="item">
-          <div class="dot"></div>
-          <h3>Seção principal</h3>
-          <p>Capa sóbria com chamada estratégica.</p>
-        </div>
-        <div class="item">
-          <div class="dot"></div>
-          <h3>Apresentação</h3>
-          <p>Apresentação do advogado ou escritório.</p>
-        </div>
-        <div class="item">
-          <div class="dot"></div>
-          <h3>Galeria / Conteúdo</h3>
-          <p>Áreas de atuação, diferenciais e conteúdos.</p>
-        </div>
-        <div class="item">
-          <div class="dot"></div>
-          <h3>Contato / Conversão</h3>
-          <p>Contato, localização e WhatsApp.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="footer">Modelo base criado para a DigitalCore Systems.</div>
+  <a class="whatsapp" href="https://wa.me/5591985066711" target="_blank" aria-label="WhatsApp">💬</a>
 </body>
 </html>
